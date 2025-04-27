@@ -21,4 +21,7 @@ func main() {
 	currentUser.OutputUserData()
 	currentUser.ChangeUserName()
 	currentUser.OutputUserData()
+
+	admin := user.NewAdmin("Password")
+	admin.OutputUserData()
 }

@@ -15,11 +15,17 @@ type User struct {
 	createdAt time.Time
 }
 
+// struct embedding
+type Admin struct {
+	password string
+	User
+}
+
 // Constructor function.
 // This is just a convention, not a built-in function.
 func New(firstName string, lastName string, email string, age int) (*User, error) {
 	if firstName == "" || lastName == "" {
-		return nil, errors.New("first name and last name are required!")
+		return nil, errors.New("first name and last name are required")
 	}
 
 	// Returning a pointer to the User struct.
@@ -40,6 +46,15 @@ func New(firstName string, lastName string, email string, age int) (*User, error
 	// 	18,
 	// 	time.Now(),
 	// }
+}
+
+func NewAdmin(password string) Admin {
+	return Admin{
+		password: password,
+		User: User{
+			firstName: "Admin",
+		},
+	}
 }
 
 // By using 'func (u User)', we are attaching a method to a struct.
